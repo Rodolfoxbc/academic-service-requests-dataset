@@ -1,0 +1,6 @@
+variable,data_type,allowed_values_or_range,description
+PERIOD,categorical,"PERIOD_1; PERIOD_2","Administrative process condition and six-month observation period"
+CAMPUS,categorical,"CAMPUS_0; CAMPUS_1; CAMPUS_2","Anonymized university campus"
+TYPE_REQUEST,categorical,"25 categories","Academic service or administrative procedure"
+CURRENT_STATE,categorical,"13 categories","Workflow state assigned to requests"
+TOTAL,integer,"1-5457","Aggregated number of requests represented by the row"

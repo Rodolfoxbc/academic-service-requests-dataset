@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this dataset or code, please cite the associated article and Figshare dataset."
+title: "An Open Multi-Campus Dataset of Academic Service Requests Before and After Administrative Process Redesign"
+type: dataset
+authors:
+  - family-names: "[ADD FAMILY NAME]"
+    given-names: "[ADD GIVEN NAME]"
+year: 2026
+repository-code: "[ADD GITHUB REPOSITORY URL]"
+url: "[ADD FIGSHARE URL]"
+identifiers:
+  - type: doi
+    value: "[ADD FIGSHARE DOI]"
+license: CC-BY-4.0
