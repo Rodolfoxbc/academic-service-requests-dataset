@@ -5,8 +5,13 @@ venv/
 .env
 .ipynb_checkpoints/
 .DS_Store
+
+data/raw/*.csv
+data/raw/*.xlsx
+
 outputs/figures/*.png
 outputs/figures/*.pdf
 outputs/tables/*.csv
+
 !outputs/figures/.gitkeep
 !outputs/tables/.gitkeep
