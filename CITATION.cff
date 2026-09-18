@@ -1,14 +1,17 @@
 cff-version: 1.2.0
-message: "If you use this dataset or code, please cite the associated article and Figshare dataset."
-title: "An Open Multi-Campus Dataset of Academic Service Requests Before and After Administrative Process Redesign"
-type: dataset
+message: "If you use this repository, please cite the associated article and the published Figshare dataset (https://doi.org/10.6084/m9.figshare.33113150)."
+title: "Reproducible analysis for An Open Multi-Campus Dataset of Academic Service Requests Before and After Administrative Process Redesign"
+type: software
 authors:
-  - family-names: "[ADD FAMILY NAME]"
-    given-names: "[ADD GIVEN NAME]"
+  - family-names: "Bojorque"
+    given-names: "Rodolfo"
+  - family-names: "Plaza"
+    given-names: "Andrea"
+  - family-names: "Morquecho"
+    given-names: "Pilar"
+  - family-names: "Moscoso"
+    given-names: "Fernando"
 year: 2026
-repository-code: "[ADD GITHUB REPOSITORY URL]"
-url: "[ADD FIGSHARE URL]"
-identifiers:
-  - type: doi
-    value: "[ADD FIGSHARE DOI]"
-license: CC-BY-4.0
+repository-code: "https://github.com/Rodolfoxbc/academic-service-requests-dataset"
+url: "https://github.com/Rodolfoxbc/academic-service-requests-dataset"
+license: MIT
