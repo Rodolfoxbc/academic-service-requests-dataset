@@ -1,6 +1,7 @@
-The anonymized dataset is intended to be released under the Creative Commons
-Attribution 4.0 International license (CC BY 4.0), subject to institutional
-approval and the final Figshare publication settings.
+The anonymized dataset is published on Figshare under the Creative Commons
+Attribution 4.0 International license (CC BY 4.0):
 
-The analysis source code is released under the MIT License included in this
-repository.
+https://doi.org/10.6084/m9.figshare.33113150
+
+The analysis source code in this repository is released under the MIT License
+included in the repository.
