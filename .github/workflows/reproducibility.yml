@@ -38,3 +38,8 @@ jobs:
           test -f outputs/figures/figure_03a_dominant_request_types.png
           test -f outputs/figures/figure_03b_remaining_request_types.png
           test -f outputs/figures/figure_06_undesirable_rate_heatmap.png
+      - name: Upload generated outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-results
+          path: outputs/
