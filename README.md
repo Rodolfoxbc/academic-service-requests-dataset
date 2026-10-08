@@ -1,73 +1,57 @@
 # Open Multi-Campus Academic Service Requests Dataset
 
-This repository contains the reproducible validation and analysis workflow associated
-with the manuscript:
+This repository contains the anonymized dataset and reproducible analysis code
+for the manuscript:
 
 **An Open Multi-Campus Dataset of Academic Service Requests Before and After
 Administrative Process Redesign**
 
-## Published dataset
+## Dataset
 
-The canonical anonymized dataset is publicly available on Figshare:
-
-- DOI: https://doi.org/10.6084/m9.figshare.33113150
-- Canonical file: `academic_service_requests.csv`
-- License: Creative Commons Attribution 4.0 International (CC BY 4.0)
-
-The dataset contains:
+The dataset contains aggregated academic service requests extracted from the
+Sistema Nacional Académico (SNA).
 
 - `PERIOD_1`: 1 September 2022 to 28 February 2023
 - `PERIOD_2`: 1 March 2023 to 31 August 2023
-- 3 pseudonymized campuses
+- 3 anonymized campuses
 - 25 request types
 - 13 workflow states
 - 432 aggregated rows
 - 97,809 represented requests
 
-Each row is a unique observed combination of `PERIOD`, `CAMPUS`,
-`TYPE_REQUEST`, and `CURRENT_STATE`. `TOTAL` is the number of requests
-represented by the row.
+Each row is a unique combination of:
 
-The source-system data were obtained through a single retrospective extraction on
-5 January 2026. `PERIOD` identifies the historical interval in which a request was
-registered, whereas `CURRENT_STATE` represents the state recorded in the source
-system at the extraction snapshot.
+- `PERIOD`
+- `CAMPUS`
+- `TYPE_REQUEST`
+- `CURRENT_STATE`
+
+`TOTAL` is the number of individual requests represented by the row. It is not
+a processing duration or number of workflow steps.
 
 ## Repository structure
 
 ```text
 .
 ├── data
-│   └── README.md
+│   ├── raw
+│   │   ├── academic_service_requests.csv
+│   │   └── processDataset.xlsx
+│   └── processed
 ├── outputs
 │   ├── figures
 │   └── tables
 ├── src
 │   ├── config.py
-│   ├── fetch_data.py
 │   ├── generate_results.py
 │   └── validate_data.py
 ├── run_analysis.py
-├── data_dictionary.csv
 ├── requirements.txt
-├── CITATION.cff
-├── DATA_LICENSE.txt
 ├── LICENSE
 └── README.md
 ```
 
-The canonical CSV is not duplicated permanently in this repository. On a clean clone,
-the analysis workflow retrieves `academic_service_requests.csv` directly from the
-published Figshare record and stores the local working copy under `data/raw/`.
-
-## Reproduce the analysis from a clean clone
-
-Clone the repository and enter the project directory:
-
-```bash
-git clone https://github.com/Rodolfoxbc/academic-service-requests-dataset.git
-cd academic-service-requests-dataset
-```
+## Installation
 
 Create and activate a virtual environment:
 
@@ -94,65 +78,63 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Run the complete workflow:
+## Generate results
+
+Run:
 
 ```bash
 python run_analysis.py
 ```
 
-The script:
-
-1. retrieves the canonical CSV from Figshare if no local copy is present;
-2. validates the schema, categories, composite-key uniqueness, missing values, and
-   numerical integrity;
-3. reproduces the descriptive tables and figures used in the illustrative analysis;
-4. generates the revised two-panel request-type visualization;
-5. calculates request-type-specific undesirable-state rates and pooled-composition
-   standardized rates; and
-6. performs the illustrative Pearson chi-squared test and reports Cramer's V.
-
-Generated material is written to `outputs/tables/` and `outputs/figures/`.
+The script validates the dataset and generates publication-ready tables and
+figures in `outputs/`.
 
 ## Undesirable workflow states
 
-The institutionally defined set used for the illustrative analysis comprises:
+The institutional classification used in the analysis includes:
 
 - `Reassigned`
 - `Pending-Review Details`
 - `Not Applicable`
 - `Under Academic Council Review`
 
-This is an institution-specific analytical classification rather than a universal
-workflow taxonomy.
+The analysis reports both absolute counts and rates relative to the total number
+of requests.
 
-## Reproducibility checks
+## Main outputs
 
-For the published dataset, the workflow validates the following reference totals:
+Tables:
 
-- 432 aggregated rows
-- 97,809 represented requests
-- 45,699 requests in `PERIOD_1`
-- 52,110 requests in `PERIOD_2`
-- 2,377 undesirable-state requests in `PERIOD_1`
-- 2,324 undesirable-state requests in `PERIOD_2`
+- total requests by period
+- requests by campus and period
+- workflow-state distribution
+- undesirable states by period
+- undesirable rates by campus and period
+- request types by period
 
-The revised workflow also reproduces pooled-composition standardized undesirable-state
-rates of approximately 5.13% and 4.54%, and the illustrative period-by-undesirable-state
-comparison (Pearson chi-squared approximately 29.27; Cramer's V approximately 0.017).
+Figures:
 
-## Interpretation and limitations
+- total requests by period
+- request volume by campus and period
+- two dominant request types by period
+- remaining eight most frequent request types by period
+- undesirable-state rate by period
+- undesirable-state counts by period
 
-The two periods cover different portions of the academic year and differ slightly in
-calendar duration (181 and 184 days). The resource was generated from one retrospective
-snapshot rather than separate end-of-period snapshots, so requests in `PERIOD_1` had
-a longer potential follow-up interval before the 5 January 2026 extraction.
+Across comparative figures, the first default Matplotlib colour consistently
+represents `PERIOD_1` and the second represents `PERIOD_2`; campus identifiers
+are shown as axis categories rather than encoded with the same period colours.
+The former campus-level heatmap is not generated because the exact campus-level
+rates are already provided in the corresponding output table.
 
-The dataset contains aggregated counts rather than individual request histories. It
-does not provide request-level processing times, event sequences, staffing levels,
-resource consumption, or a contemporaneous control group. The illustrative comparisons
-should therefore not be interpreted as causal estimates of the administrative redesign.
+## Data availability
 
-## Licenses
+The anonymized dataset is available on Figshare at:
+https://doi.org/10.6084/m9.figshare.33113150
 
-The published Figshare dataset is licensed under CC BY 4.0. The analysis source code
-in this repository is licensed under the MIT License.
+## Limitations
+
+The two periods cover different parts of the academic year. Comparisons may be
+affected by academic-calendar and seasonal demand. The dataset contains
+aggregated counts and does not include individual request histories, processing
+times, staffing levels, or resource consumption.
